@@ -8,7 +8,7 @@ from PIL import Image
 # 執行指令
 def cmd(command):
     subp = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding="utf-8")
-    subp.wait(30)
+    subp.wait(100)
     if subp.poll() == 0:
         print(subp.communicate()[0])
     else:
