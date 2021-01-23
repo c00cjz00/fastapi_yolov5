@@ -3,9 +3,11 @@
 sudo apt-get update
 sudo apt-get install libgl1-mesa-dev
 sudo apt-get install gcc g++
-conda create -n detectron2 pip
+conda create -n yolov5 pip
 conda activate 
-pip install torch==1.7.1+cpu torchvision==0.8.2+cpu torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+git clone https://github.com/c00cjz00/fastapi_yolov5
+cd fastapi_yolov5
+pip install -r requirements.txt
 
 pip install fastapi
 pip install uvicorn[standard]
@@ -13,20 +15,18 @@ pip install aiofiles python-multipart
 pip install opencv-python
 pip install tqdm
 pip install Jinja2
-git clone https://github.com/facebookresearch/detectron2.git
-python -m pip install -e detectron2
 ```
 ### 執行
 ```
-python form.py
+python form_yolov5.py
 ```
 或
 ```
-uvicorn form:app  --host 0.0.0.0 --port 9999
+uvicorn form_yolov5:app  --host 0.0.0.0 --port 9876
 ```
 ### 瀏覽
 ```
-http://$IP:9999
+http://$IP:9876
 ```
 
 Editor: Allen Chuang
