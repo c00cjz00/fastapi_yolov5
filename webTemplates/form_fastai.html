@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<h2>Detectron2 form</h2>
+	<a href="static/bus2.jpg" download>Dowdload Example</a>
+	<form action="/" enctype="multipart/form-data" method="post" data-toggle="validator">
+		<div class="form-group">
+		  <label for="email">Email:</label>
+		  <input type="email" class="form-control" id="email"  name="email" placeholder="Enter email" value="{{ email }}" required>
+		</div>
+		<div class="form-group">
+		  <label class="form-label" for="usr">Name:</label>
+		  <input type="text" class="form-control" id="usr" name="usr" value="{{ usr }}" required>
+		</div>
+		<div class="form-group">
+		  <label class="form-label" for="age">Age:</label>
+		  <input type="number" class="form-control" id="age" name="age" value="{{ age }}" required>
+		</div>
+		<div class="form-group">
+		  <label class="form-label" for="model">Model:</label>
+		  {% if model %}
+		  <input type="text" class="form-control" id="model" name="model" value="{{ model }}" required>
+		  {% else %}
+		  <input type="text" class="form-control" id="model" name="model" value="modules/fastai/mnist-detection.pkl" required>
+		  {% endif %}
+		</div>
+		<div class="form-group">
+		  <label class="form-label" for="age">Image:</label>
+		  <input type="file"  class="form-control" id="file" name="file" required><br>
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+	<br>
+	{% if email %}
+	<!--p>Result: {{ request }}</p-->
+	<p>Email: {{ email }}</p>
+	<p>Name: {{ usr }}</p>
+	<p>Ages: {{ age }}</p>
+	<p>Uploadfile: {{ filename }}</p>
+	<p>command: {{ mycmd }}</p>	
+	<p>Result: {{ prediction }}</p>	
+	<img src="{{ url_for('static', path='/' + filename ) }}" width="200">
+	{% endif %}
+</div>
+</body>
+</html>
